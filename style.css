@@ -1,0 +1,151 @@
+:root {
+  --bg-color: #f5f5f5;
+  --text-color: #222;
+  --container-bg: #fff;
+  --tile-bg: #4e89ae;
+  --btn-bg: #4e89ae;
+  --btn-hover: #3b7291;
+  --vowel-bg: #ffb703;
+  --consonant-bg: #8ac926;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background: var(--bg-color);
+  color: var(--text-color);
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  transition: background 0.3s, color 0.3s;
+}
+
+body.dark {
+  --bg-color: #181818;
+  --text-color: #eee;
+  --container-bg: #242424;
+  --tile-bg: #4e89ae;
+  --btn-bg: #4e89ae;
+  --btn-hover: #377399;
+  --vowel-bg: #d4a02c;
+  --consonant-bg: #6ca811;
+}
+
+.container {
+  background: var(--container-bg);
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+  width: 480px;
+  text-align: center;
+  transition: background 0.3s;
+}
+
+.panel {
+  margin-bottom: 20px;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#themeToggle {
+  background: none;
+  border: none;
+  font-size: 1.5em;
+  cursor: pointer;
+  padding: 0 5px;
+  color: inherit;
+}
+
+#themeToggle:hover {
+  color: var(--btn-hover);
+}
+
+.hidden {
+  display: none;
+}
+
+.numbers {
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 10px;
+}
+
+#numberTiles div {
+  background: var(--tile-bg);
+  color: #fff;
+  padding: 10px;
+  border-radius: 4px;
+  font-size: 1.2em;
+  width: 50px;
+  margin: 2px;
+}
+
+#target {
+  font-size: 2em;
+  font-weight: bold;
+  margin-left: 10px;
+}
+
+#timer {
+  font-size: 1.5em;
+  margin-bottom: 10px;
+}
+
+button {
+  padding: 8px 12px;
+  margin: 5px;
+  border: none;
+  background: var(--btn-bg);
+  color: #fff;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+button:hover {
+  background: var(--btn-hover);
+}
+
+#result {
+  margin-top: 10px;
+  font-weight: bold;
+}
+
+.letters {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 10px;
+}
+
+#lettersTiles div {
+  color: #fff;
+  padding: 10px;
+  border-radius: 4px;
+  font-size: 1.2em;
+  width: 40px;
+  margin: 2px;
+}
+
+.vowel {
+  background: var(--vowel-bg);
+}
+
+.consonant {
+  background: var(--consonant-bg);
+}
+
+#lettersTimer {
+  font-size: 1.5em;
+  margin-bottom: 10px;
+}
+
+#lettersResult {
+  margin-top: 10px;
+  font-weight: bold;
+}
