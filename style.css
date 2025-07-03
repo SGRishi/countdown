@@ -1,0 +1,97 @@
+body {
+  font-family: Arial, sans-serif;
+  background: #f5f5f5;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.container {
+  background: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+  width: 400px;
+  text-align: center;
+}
+
+.panel {
+  margin-bottom: 20px;
+}
+
+.hidden {
+  display: none;
+}
+
+.numbers {
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 10px;
+}
+
+#numberTiles div {
+  background: #007bff;
+  color: #fff;
+  padding: 10px;
+  border-radius: 4px;
+  font-size: 1.2em;
+  width: 50px;
+}
+
+#target {
+  font-size: 2em;
+  font-weight: bold;
+}
+
+#timer {
+  font-size: 1.5em;
+  margin-bottom: 10px;
+}
+
+button {
+  padding: 8px 12px;
+  margin: 5px;
+  border: none;
+  background: #28a745;
+  color: #fff;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+button:hover {
+  background: #218838;
+}
+
+#result {
+  margin-top: 10px;
+  font-weight: bold;
+}
+
+.letters {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 10px;
+}
+
+#lettersTiles div {
+  background: #dc3545;
+  color: #fff;
+  padding: 10px;
+  border-radius: 4px;
+  font-size: 1.2em;
+  width: 40px;
+  margin: 2px;
+}
+
+#lettersTimer {
+  font-size: 1.5em;
+  margin-bottom: 10px;
+}
+
+#lettersResult {
+  margin-top: 10px;
+  font-weight: bold;
+}

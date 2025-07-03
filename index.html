@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Countdown Game</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <h1>Countdown Numbers Game</h1>
+    <div id="setup" class="panel">
+      <label for="largeCount">How many large numbers (0-4)?</label>
+      <input type="number" id="largeCount" min="0" max="4" value="2">
+      <button id="startBtn">Start Game</button>
+    </div>
+    <div id="game" class="panel hidden">
+      <div class="numbers">
+        <div id="numberTiles"></div>
+        <div id="target"></div>
+      </div>
+      <div id="timer">30</div>
+      <button id="doneBtn" class="hidden">I'm Done</button>
+    </div>
+    <div id="answerPanel" class="panel hidden">
+      <label for="answer">Enter your expression:</label>
+      <input type="text" id="answer" placeholder="(75+50-8)*7-(3*2)">
+      <button id="checkBtn">Check</button>
+      <button id="solutionBtn">Show Solution</button>
+      <div id="result"></div>
+      <div id="solution" class="hidden"></div>
+    </div>
+
+    <h2>Letters Round</h2>
+    <div id="lettersSetup" class="panel">
+      <button id="startLettersBtn">Start Letters Round</button>
+    </div>
+    <div id="lettersGame" class="panel hidden">
+      <div id="lettersTiles" class="letters"></div>
+      <div id="lettersTimer">30</div>
+      <button id="vowelBtn">Vowel</button>
+      <button id="consonantBtn">Consonant</button>
+      <button id="lettersDoneBtn" class="hidden">I'm Done</button>
+    </div>
+    <div id="lettersAnswerPanel" class="panel hidden">
+      <label for="lettersAnswer">Enter your word:</label>
+      <input type="text" id="lettersAnswer">
+      <button id="lettersCheckBtn">Check</button>
+      <div id="lettersResult"></div>
+    </div>
+  </div>
+  <audio id="themeAudio" src="https://dn721801.ca.archive.org/0/items/tvtunes_5309/Countdown.mp3" preload="auto"></audio>
+  <script src="script.js"></script>
+</body>
+</html>
