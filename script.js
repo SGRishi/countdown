@@ -15,6 +15,11 @@ const consonants = (
 ).split('');
 const vowelsTamil = 'அஆஇஈஉஊஎஏஐஒஓஔ'.repeat(2).split('');
 const consonantsTamil = 'கஙசஞடணதநபமயரலவழளறன'.repeat(2).split('');
+const vowelSigns = ['', 'ா','ி','ீ','ு','ூ','ெ','ே','ை','ொ','ோ','ௌ'];
+const uyirmeiTamil = [];
+consonantsTamil.forEach(c => {
+  vowelSigns.forEach(v => uyirmeiTamil.push(c + v));
+});
 let lettersTamil = false;
 let currentLetters = [];
 let vowelCount = 0;
@@ -267,22 +272,39 @@ function startLettersRound(tamil = false) {
   document.getElementById('lettersAnswerPanel').classList.add('hidden');
   document.getElementById('lettersGame').classList.remove('hidden');
   document.getElementById('lettersDoneBtn').classList.add('hidden');
+  const uyirmeiBtn = document.getElementById('uyirmeiBtn');
+  if (tamil) {
+    uyirmeiBtn.classList.remove('hidden');
+  } else {
+    uyirmeiBtn.classList.add('hidden');
+  }
 }
 
-function pickLetter(fromVowels) {
+function pickLetter(fromVowels, useUyirmei = false) {
   if (currentLetters.length >= 9) return;
   let pool;
-  if (lettersTamil) {
+  let cls;
+  if (lettersTamil && useUyirmei) {
+    pool = uyirmeiTamil;
+    cls = 'uyirmei';
+  } else if (lettersTamil) {
     pool = fromVowels ? vowelsTamil : consonantsTamil;
+    cls = fromVowels ? 'vowel' : 'consonant';
   } else {
     pool = fromVowels ? vowels : consonants;
+    cls = fromVowels ? 'vowel' : 'consonant';
   }
   const letter = pool[Math.floor(Math.random() * pool.length)];
   currentLetters.push(letter);
-  fromVowels ? vowelCount++ : consonantCount++;
+  if (useUyirmei) {
+    vowelCount++;
+    consonantCount++;
+  } else {
+    fromVowels ? vowelCount++ : consonantCount++;
+  }
   const d = document.createElement('div');
   d.textContent = letter;
-  d.classList.add(fromVowels ? 'vowel' : 'consonant');
+  d.classList.add(cls);
   document.getElementById('lettersTiles').appendChild(d);
 
   const remaining = 9 - currentLetters.length;
@@ -330,11 +352,29 @@ function lettersUsesAvailable(word) {
   currentLetters.forEach(l => {
     counts[l] = (counts[l] || 0) + 1;
   });
-  for (const ch of word.toUpperCase()) {
-    if (!counts[ch]) return false;
-    counts[ch]--;
+  if (lettersTamil) {
+    const tokens = Object.keys(counts).sort((a, b) => b.length - a.length);
+    let idx = 0;
+    while (idx < word.length) {
+      let found = null;
+      for (const t of tokens) {
+        if (word.startsWith(t, idx)) {
+          found = t;
+          break;
+        }
+      }
+      if (!found || !counts[found]) return false;
+      counts[found]--;
+      idx += found.length;
+    }
+    return true;
+  } else {
+    for (const ch of word.toUpperCase()) {
+      if (!counts[ch]) return false;
+      counts[ch]--;
+    }
+    return true;
   }
-  return true;
 }
 
 async function checkWord() {
@@ -363,6 +403,7 @@ document.getElementById('startLettersBtn').addEventListener('click', () => start
 document.getElementById('startTamilLettersBtn').addEventListener('click', () => startLettersRound(true));
 document.getElementById('vowelBtn').addEventListener('click', () => pickLetter(true));
 document.getElementById('consonantBtn').addEventListener('click', () => pickLetter(false));
+document.getElementById('uyirmeiBtn').addEventListener('click', () => pickLetter(false, true));
 document.getElementById('lettersDoneBtn').addEventListener('click', stopLettersTimer);
 document.getElementById('lettersCheckBtn').addEventListener('click', checkWord);
 
