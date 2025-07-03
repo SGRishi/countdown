@@ -4,6 +4,7 @@ let currentNumbers = [];
 let targetNumber = 0;
 let timerInterval;
 let timeLeft = 30;
+const themeAudio = document.getElementById('themeAudio');
 
 function shuffle(array) {
   for (let i = array.length - 1; i > 0; i--) {
@@ -36,6 +37,10 @@ function startGame() {
 
   timeLeft = 30;
   document.getElementById('timer').textContent = timeLeft;
+  if (themeAudio) {
+    themeAudio.currentTime = 0;
+    themeAudio.play();
+  }
   document.getElementById('game').classList.remove('hidden');
   document.getElementById('answerPanel').classList.add('hidden');
   document.getElementById('doneBtn').classList.add('hidden');
@@ -52,6 +57,10 @@ function startGame() {
 
 function stopTimer() {
   clearInterval(timerInterval);
+  if (themeAudio) {
+    themeAudio.pause();
+    themeAudio.currentTime = 0;
+  }
   document.getElementById('doneBtn').classList.add('hidden');
   document.getElementById('answerPanel').classList.remove('hidden');
 }
