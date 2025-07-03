@@ -7,6 +7,7 @@
   --btn-hover: #3b7291;
   --vowel-bg: #ffb703;
   --consonant-bg: #8ac926;
+  --uyirmei-bg: #f28482;
 }
 
 body {
@@ -31,6 +32,7 @@ body.dark {
   --btn-hover: #377399;
   --vowel-bg: #d4a02c;
   --consonant-bg: #6ca811;
+  --uyirmei-bg: #c56a6a;
 }
 
 .container {
@@ -138,6 +140,10 @@ button:hover {
 
 .consonant {
   background: var(--consonant-bg);
+}
+
+.uyirmei {
+  background: var(--uyirmei-bg);
 }
 
 #lettersTimer {
